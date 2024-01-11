@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> "Шибениця"! </title>
+</head>
+
+<body>
+	<h1>"Шибениця"!</h1>
+	
+	<script>
+	//Створюємо масив із слів
+	var words = ["javascript", "monkey", "amazing", "pancake"];
+	
+	//Обираємо випадкове слово
+	var word = words[Math.floor(Math.random()*words.length)];
+	
+	//Встановлюємо масив відповідей
+	var answerArray = [];
+	for ( var i=0; i < word.length; i++) {
+	answerArray[i] = "_";
+	}
+	
+	var remainingLetters = word.length;
+	
+	//Ігровий цикл
+	while (remainingLetters > 0) {
+		//Показуємо гравцю його прогрес
+		alert(answerArray.join(" "));
+	
+		//Отримуємо варіанти відповідей від гравця
+		var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+		if (guess === null) {
+		//Виходимо із ігрового циклу
+		break;
+		} else if (guess.length !== 1) {
+		alert("Please enter a single letter."); 
+		} else {
+		//Оновлюємо стан гри за допомогою змінного параметра guess
+		for (var j=0; j<word.length; j++) {
+			if (word[j] === guess) { 
+			answerArray[j] = guess;
+			remainingLetters--;
+			}
+		}
+	}
+	//Кінець ігрового циклу
+	}
+	
+	//Показуємо відповідь і вітаємо гравця
+	alert(answerArray.join(" "));
+	alert("Good job! The answer was " + word);
+	</script>
+</body>
+</html>
